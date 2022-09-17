@@ -1,0 +1,80 @@
+pipeline {
+    agent {
+    kubernetes {
+      label 'mypod'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: docker
+    command: ['cat']
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
+  volumes:
+  - name: docker-socket
+    hostPath:
+        path: /var/run/docker.sock
+
+"""
+    }
+  }
+    tools {
+        git "git"
+        nodejs "node16"
+    }
+    environment {
+        registryCredential = 'dockerhub'
+    }
+    stages {
+        stage('clone') {
+            steps {
+                git branch: "master", url: "https://github.com/phcxio7949/ci-cd_project_app/backend.git"
+            }
+        }
+        stage('build') {
+            steps {
+                     sh "ls -al"
+                     sh "npm install"
+            }
+        }
+        stage('image build') {
+            steps {
+                container('docker') {
+                                sh "ls -al"
+                                sh "docker build -t phcxio7949/project-back:${BUILD_NUMBER}.0 ."
+                                sh "docker images"
+                }
+             }
+        }
+        stage('image push') {
+            steps {
+                container('docker') {
+                    withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
+                        sh "ls -al"
+                        sh "docker images"
+                        sh "docker push phcxio7949/project-back:${BUILD_NUMBER}.0"
+                        sh "docker rmi phcxio7949/project-back:${BUILD_NUMBER}.0"
+                    }
+                }
+            }
+        }
+       stage('git push') {
+            steps {
+            dir('deploy') {
+                    git branch:'master', url: 'https://github.com/phcxio7949/ci-cd_project_distribute.git'
+                    sh "sed -i 's/project-back:.../project-back:${BUILD_NUMBER}.0/' backend.yaml"
+                    sh "echo ${BUILD_NUMBER}"
+                     sh "git config --global user.email inteak7949@gmail.com" 
+                     sh "git config --global user.name phcxio7949"
+                    sh 'git add .'
+                    sh "git commit -m 'image update project-back:${BUILD_NUMBER}.0'"
+                    sh "git push https://phcxio7949:******************************@github.com/phcxio7949/ci-cd_project_distribute.git HEAD:dev_test"
+              }  
+        }
+        }
+    }
+}
