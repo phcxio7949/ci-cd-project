@@ -1,6 +1,7 @@
 # ci/cd 자동화 배포 프로젝트
 
 빌드용 github : https://github.com/phcxio7949/ci-cd_project_app
+
 배포용 github : https://github.com/phcxio7949/ci-cd_project_distribute
 
 # 목차
@@ -142,6 +143,7 @@ Mongos는 Config 서버와 연결 후 쿼리가 들어오면 구성정보를 바
 먼저 빌드와 배포를 구분하기 위해 2개의 github repository를 사용하였습니다. 
 
 빌드용 github : https://github.com/phcxio7949/ci-cd_project_app
+
 배포용 github : https://github.com/phcxio7949/ci-cd_project_distribute
 
 빌드용 github에는 frontend, backend, DB에 관한 코드를 저장하도록 하였습니다.
