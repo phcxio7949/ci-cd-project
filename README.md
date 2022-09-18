@@ -155,6 +155,8 @@ Jenkins의 URL이 외부 노출 되었을 경우를 대비하여 내부 설정�
 
 AWS EBS와 연동하여 Jenkins의 pod가 삭제되어도 데이터는 저장하여 새롭게 생성하여 이전과 동일한 데이터를 가질 수 있게 설정하였습니다.
 
+![frontedn](https://github.com/phcxio7949/ci-cd_project_app/blob/031141d18782610b10584dbf4e0d96db6b0f5ef9/script/jenkins_backend_pipeline)
+
 **Argo CD**
 
 Helm으로 Argo CD를 설치하였습니다.
