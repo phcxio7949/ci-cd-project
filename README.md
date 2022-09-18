@@ -61,6 +61,7 @@
 * Kubernetes, Docker 사용하여 cluster 관리
 
 ## CI/CD 아키텍쳐
+<img width="970" alt="파이프라인 아키텍쳐" src="https://user-images.githubusercontent.com/78542349/190887112-b1f51548-d4de-4d8a-9b2e-660324649af9.png">
 
 
 
