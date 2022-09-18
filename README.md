@@ -73,6 +73,9 @@
 
 ### **로그인 및 회원 가입**
 
+![로그인,회원가입](https://user-images.githubusercontent.com/78542349/190887402-be1a1cfc-90c2-4c1b-8c9b-a8ea5ab3c5bc.png)
+![JWT](https://user-images.githubusercontent.com/78542349/190887423-aeee501d-4451-4b7a-83ff-1df09cf51415.png)
+
 로그인과 회원 가입 버튼을 만들어 클릭 시 전환할 수 있도록 구현하였습니다.
 
 회원 가입 버튼을 클릭 시 회원 가입 페이지로 이동하여 회원 가입하게 되면 DB에 저정하도록 구현하였습니다.
@@ -83,14 +86,21 @@
 
 ### **CRUD 기능**
 
+![게시판](https://user-images.githubusercontent.com/78542349/190887425-67b17a28-18eb-4309-beb6-943d6bccc3bf.png)
+
 게시물에 대한 기본적인 CRUD 기능을 구현하였습니다.
 
 게시물 작성 시 모든 사용자의 게시물 피드에 제공합니다.
 
 게시물 수정 및 삭제는 해당 게시물에 대한 작성자에게만 인가하여 권한을 제한 하였고 수정, 삭제 버튼을 보여주도록 하였습니다.
 
+![수정](https://user-images.githubusercontent.com/78542349/190887406-6ecdec0a-235b-4036-be6a-3599b67b1122.png)
+![수정2](https://user-images.githubusercontent.com/78542349/190887407-05b7ac3a-76e6-4f28-99ae-1adc7ee05569.png)
+
 
 ### **프로필 설정**
+
+![닉네임,로그아웃](https://user-images.githubusercontent.com/78542349/190887426-b8c85f11-e11b-469f-9d3d-e86ea2b409d5.png)
 
 닉네임 설정과 로그아웃 기능을 구현하였습니다.
 
@@ -99,6 +109,10 @@
 로그아웃 시 로그인 및 회원 가입 페이지로 이동하여 세션을 단절 시킵니다.
 
 ### **DB**
+
+![db1](https://user-images.githubusercontent.com/78542349/190887414-9efb0186-8c61-405e-9775-58c5a41d224a.png)
+![db2](https://user-images.githubusercontent.com/78542349/190887417-c04588be-acb3-47de-87d8-9d2d34536b29.png)
+
 DB는 간단한 CRUD 기능을 사용하기에 설계가 쉬운 MongoDB를 사용하였습니다.
 
 초기 설계에는 벡엔드와 DB를 한 컨테이너 안에서 구현하는 것으로 하였으나 보안과 관리 상 벡엔드와 DB를 분리하도록 설계하였습니다.
@@ -115,6 +129,8 @@ Mongos는 Config 서버와 연결 후 쿼리가 들어오면 구성정보를 바
 
 
 ### **무중단 배포**
+
+<img width="970" alt="파이프라인 아키텍쳐" src="https://user-images.githubusercontent.com/78542349/190887112-b1f51548-d4de-4d8a-9b2e-660324649af9.png">
 
 애플리케이션 출시에 있어서 지속적 통합과 지속적 배포를 위해 github, AWS EKS, Jenkins, Argo CD를 사용했으며 빌드와 배포를 분리하였습니다.
 
@@ -161,6 +177,9 @@ jenkins나 db와 같은 저장소가 필요한 곳을 EBS로 연동하여 데이
 
 **네트워크**
 
+![ALB](https://user-images.githubusercontent.com/78542349/190887412-84fda42d-8618-40fa-bd90-563e947a8f9a.png)
+![ALB2](https://user-images.githubusercontent.com/78542349/190887413-04ffa2c1-665e-4e23-811b-72f932fcdbd7.png)
+
 기본적을 AWS ALB를 사용하여 로드벨런싱을 하였습니다.
 
 보안을 위해서 EKS 상의 노드들은 전부 private network 영역에서 실행을 시켰으며 ALB Ingress를 사용하여 외부에서 접근할 수 있도록 하였습니다.
@@ -171,8 +190,13 @@ jenkins나 db와 같은 저장소가 필요한 곳을 EBS로 연동하여 데이
 
 -> 하나의 ALB에서 여러개의 서비스를 각 Ingress에 적힌 host를 통해서 접근할수 있습니다.
 
+![ALB Ingress](https://user-images.githubusercontent.com/78542349/190887409-ee9c72a0-6bbe-4fad-9fda-4dae6e983297.png)
+
 
 **모니터링 도구**
+
+![모니터링1](https://user-images.githubusercontent.com/78542349/190887403-d153f497-f104-43f6-bb85-e079d171f622.png)
+![모니터링2](https://user-images.githubusercontent.com/78542349/190887404-29ca2c43-7217-4f1a-80b6-31d4e63ed995.png)
 
 cloudwatch Agent/fleuntbit 를 Demonset 형태로 배포하였으며 각 노드의 Metric 및 Log 수집하여 cloudwatch에서 시각화된 정보를 얻습니다.
 
@@ -189,6 +213,9 @@ jenkins pod가 EKS에서 agent pod로 올라기 때문에 docker 기능 사용 �
 해결방법
 
 DooD
+
+![dind1](https://user-images.githubusercontent.com/78542349/190887418-44f2c897-78ab-4a9c-8bf9-96d92ed3e3b0.png)
+![dind2](https://user-images.githubusercontent.com/78542349/190887420-cb29f5a6-9b47-4cb0-8a44-6b27a4170de0.png)
 
 에이전트 파드를 kubernetes yaml파일 형식으로 프로비저닝할 수 있는 젠킨스 pipeline script 이용하였습니다.
 DooD(docker out of docker) 방식으로 호스트의 도커 소켓 파일을 컨테이너에 마운트하여 공유하였습니다.
@@ -212,7 +239,6 @@ DinD
 프로젝트를 진행하는 동안 팀에 최대한 피해를 끼치지 않기 위해 중간에 쉬는 시간이라던지 밤을 세서라도 필요한 공부를 하며 팀 프로젝트에 기여하게 되니 스스로 개발에 몰입하는 모습을 발견하게 되었습니다.
 
 이번 프로젝트로 많은 것을 배웠고, 문제에 직면했을때 이를 해결했던 경험을이 저에게 많은 도움이 되었다고 생각합니다.
-
 
 
 
