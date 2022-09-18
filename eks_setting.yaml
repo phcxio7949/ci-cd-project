@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: bluebird
+  region: ap-northeast-2
+  version: "1.20"
+
+cloudWatch:
+  clusterLogging:
+    enableType: ["*"]
+
+managedNodeGroup:
+  name: bluebird-nodes
+  instanceType: t3.medium
+  minSize: 3
+  desiredCapacity:  3
+  maxSize: 6
+  privateNetworking: true
