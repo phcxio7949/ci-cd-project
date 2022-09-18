@@ -67,8 +67,7 @@
 
 
 ## Cluster 아키텍쳐
-![클러스터 아키텍쳐](https://user-images.githubusercontent.com/78542349/190885186-9f81e06d-236a-498f-87d9-8b85a8df2db1.png)
-
+***
 ## 핵심 기능
 ***
 ### **로그인 및 회원 가입**
