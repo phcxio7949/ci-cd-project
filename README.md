@@ -1,5 +1,8 @@
 # ci/cd 자동화 배포 프로젝트
 
+
+배포용 github : https://github.com/phcxio7949/ci-cd_project_distribute
+
 # 목차
 * [개발 환경](#개발환경)
 * [사용기술](#사용-기술)
