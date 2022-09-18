@@ -214,13 +214,14 @@ jenkins pod가 EKS에서 agent pod로 올라기 때문에 docker 기능 사용 �
 
 DooD
 
-![dind1](https://user-images.githubusercontent.com/78542349/190887418-44f2c897-78ab-4a9c-8bf9-96d92ed3e3b0.png)
-![dind2](https://user-images.githubusercontent.com/78542349/190887420-cb29f5a6-9b47-4cb0-8a44-6b27a4170de0.png)
-
 에이전트 파드를 kubernetes yaml파일 형식으로 프로비저닝할 수 있는 젠킨스 pipeline script 이용하였습니다.
 DooD(docker out of docker) 방식으로 호스트의 도커 소켓 파일을 컨테이너에 마운트하여 공유하였습니다.
 
 DinD
+
+
+![dind1](https://user-images.githubusercontent.com/78542349/190887418-44f2c897-78ab-4a9c-8bf9-96d92ed3e3b0.png)
+![dind2](https://user-images.githubusercontent.com/78542349/190887420-cb29f5a6-9b47-4cb0-8a44-6b27a4170de0.png)
 
 에이전트 파드에 도커를 설치한 jenkins-agent 이미지 신규 생성(DinD(docker in docker) 방식)하였습니다.
 
