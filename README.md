@@ -163,6 +163,8 @@ Helm으로 Argo CD를 설치하였습니다.
 
 **Cluster 아키텍쳐**
 
+![클러스터 아키텍쳐](https://user-images.githubusercontent.com/78542349/190885186-9f81e06d-236a-498f-87d9-8b85a8df2db1.png)
+
 AWS EKS를 사용하여 기본 cluster를 구성하였습니다.
 
 각 용도 별로 네임스페이스를 만들어 해당하는 pod들을 실행하였습니다.
