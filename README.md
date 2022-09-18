@@ -175,6 +175,8 @@ jenkins나 db와 같은 저장소가 필요한 곳을 EBS로 연동하여 데이
 
 서버의 사용량에 따라 자동적으로 스케일링을 할 수 있도록 yaml파일을 설정하였습니다.
 
+EKS.yamlhttps://github.com/phcxio7949/ci-cd_project_app/blob/d5a8acb7650a1fe449e27948b67213b293b34795/eks_setting.yaml
+
 **네트워크**
 
 ![ALB](https://user-images.githubusercontent.com/78542349/190887412-84fda42d-8618-40fa-bd90-563e947a8f9a.png)
