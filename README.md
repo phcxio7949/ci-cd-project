@@ -1,6 +1,6 @@
 # ci/cd 자동화 배포 프로젝트
 
-빌드용 github : https://github.com/phcxio7949/ci-cd_project_app
+통합용 github : https://github.com/phcxio7949/ci-cd_project_app
 
 배포용 github : https://github.com/phcxio7949/ci-cd_project_distribute
 
@@ -150,7 +150,7 @@ Mongos는 Config 서버와 연결 후 쿼리가 들어오면 구성정보를 바
 
 배포용 github에는 각각의 manifest 파일을 저장하여 버전 업데이트에 관한 내용을 저장하였습니다.
 
-1. 개발자가 업데이트한 코드를 빌드용 github 저장소에 push한다.
+1. 개발자가 업데이트한 코드를 용 github 저장소에 push한다.
 2. github에서 push가 되면 이벤트가 발생하여 jenkins에서 빌드를 실행한다.
 3. 새로운 빌드가 발생하면 jenkins pipeline으로 dockerhub에 새로운 이미지를 생성하고 배포용 github 저장소의 manifest 파일에 버전을 업데이트하여 push 하여 이미지 태그를 수정한다.
 4. 배포용 github가 업데이트 되면 Argo CD에서 업데이트 된 내용을 감지하여 클러스터를 자동으로 업데이트하며 도커의 새로운 이미지를 불러와 배포를 시작한다.
